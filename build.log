@@ -1,0 +1,9 @@
+> my-react-app@0.1.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Failed to compile.
+
+[eslint] src\App.js Syntax error: Unexpected token (26:0) (26:undefined) 
+
+
