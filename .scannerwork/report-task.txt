@@ -1,0 +1,6 @@
+projectKey=Travel2
+serverUrl=http://localhost:9099
+serverVersion=10.5.1.90531
+dashboardUrl=http://localhost:9099/dashboard?id=Travel2
+ceTaskId=7f569612-7c6e-44d5-814c-c9415ad587bf
+ceTaskUrl=http://localhost:9099/api/ce/task?id=7f569612-7c6e-44d5-814c-c9415ad587bf
