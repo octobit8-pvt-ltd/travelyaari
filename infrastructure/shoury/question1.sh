@@ -14,4 +14,4 @@ echo $username
 
 for repo in repos;do
         git clone "$repos"
-done
+done 
