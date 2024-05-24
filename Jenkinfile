@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+    
+    environment {
+        // Define environment variable to store branch name
+        BRANCH_NAME = "${env.BRANCH_NAME}"
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/octobit8-pvt-ltd/travelyaari.git']])
+                
+            }
+        }
+        
+        stage('Build') {
+            steps {
+                // Install npm dependencies
+                sh 'npm install'
+            }
+        }
+        
+        stage('Test') {
+            steps {
+                // Run npm tests (if applicable)
+                sh 'npm test'
+            }
+        }
+        
+        stage('Changelog') {
+            steps {
+                // Generate changelog
+                sh 'npm run changelog'
+            }
+        }
+        
+        stage('Compile') {
+            steps {
+                // Compile the code
+                sh 'npm run build'
+            }
+        }
+    }
+    
+    post {
+        success {
+            // Echo success message along with branch name
+            echo "Pipeline executed successfully on branch ${BRANCH_NAME}!"
+        }
+        failure {
+            // Echo failure message along with branch name
+            echo "Pipeline failed on branch ${BRANCH_NAME}!"
+        }
+    }
+}
